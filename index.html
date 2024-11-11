@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide Show</title>
+</head>
+<style>
+    body {
+        background-color: #e6e6e6;
+    }
+    .container {
+        width: fit-content;
+        margin: 50px auto;
+        position: relative
+    }
+
+    .slide {
+        width: 600px;
+        height: 500px;
+        border-radius: 15px;
+    }
+
+    .icon {
+        height: 30px;
+        position: absolute;
+        cursor: pointer;
+    }
+
+    .pre-icon {
+        left: 0;
+        top: 50%;
+    }
+
+    .pre-icon:hover {
+        transform: scale(0.8) translateX(-5px);
+    }
+
+    .next-icon {
+        right: 0;
+        top: 50%;
+    }
+
+    .next-icon:hover {
+        transform: scale(0.8) translateX(5px);
+    }
+</style>
+
+<body>
+    <div class="container">
+         <img src="" id="slide" class="slide"> 
+        <img src="./img/previous.jpeg" id="slide" class="icon pre-icon" onclick="prevSlide()">
+        <img src="./img/next.jpeg" id="slide" class="icon next-icon" onclick="nextSlide()">
+    </div>
+
+    <script>
+        const slideImg = ["img/img1.jpeg", "img/img2.jpeg", "img/img3.jpeg", "img/img4.jpeg", "img/img5.jpeg","img/img6.jpeg"]
+        
+        let index = 0;
+        const slide = document.getElementById('slide');
+
+        function nextSlide() {
+            if(index < slideImg.length - 1) {
+                index++;
+            }
+            else{
+                index = 0
+            }
+            slide.src = slideImg[index]
+        }
+
+        function prevSlide() {
+            if(index > 0) {
+                index--;
+            }
+            else{
+                index = slideImg.length - 1;
+            }
+            slide.src = slideImg[index]
+        }
+
+        setInterval(nextSlide, 2500);
+    </script>
+</body>
+
+</html>
